@@ -1,0 +1,38 @@
+installClusterAgent: true
+
+imageInfo:
+  agentImage: docker.io/appdynamics/cluster-agent
+  agentTag: latest
+  operatorImage: docker.io/appdynamics/cluster-agent-operator
+  operatorTag: latest
+  imagePullPolicy: Always
+
+controllerInfo:
+  url: http://appdynamics.portoseguro.brasil:80
+  account: customer1
+  accessKey: 3ffed1d3-b5df-420b-a722-5cfa5e2388d8
+
+agentServiceAccount: appdynamics-cluster-agent
+operatorServiceAccount: appdynamics-operator
+
+# Cluster agent config
+clusterAgent:
+  nsToMonitor:
+    - amazon-guardduty
+    - appdynamics
+    - cpe-jobs
+    - default
+    - dynatrace
+    - external-secrets
+    - ingress-nginx
+    - karpenter
+    - kube-node-lease
+    - kube-prometheus-stack
+    - kube-public
+    - kube-system
+    - ns-application
+    - prd-psg-corp-apisensedia
+    - twistlock
+  appName: sensedia-eks-prd
+
+# helm upgrade --install appdynamics --namespace appdynamics appdynamics-charts/cluster-agent -f ./values-prd.yaml

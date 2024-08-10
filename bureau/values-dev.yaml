@@ -1,0 +1,35 @@
+imageInfo:
+  agentImage: docker.io/appdynamics/cluster-agent
+  agentTag: latest
+  operatorImage: docker.io/appdynamics/cluster-agent-operator
+  operatorTag: latest
+  imagePullPolicy: Always
+
+controllerInfo:
+  url: http://li3449.portoseguro.brasil:8090
+  account: customer1
+  accessKey: 0dfb40c3-0d67-4aac-ad10-c9cff5e611f2
+
+agentServiceAccount: appdynamics-cluster-agent
+operatorServiceAccount: appdynamics-operator
+
+# Cluster agent config
+clusterAgent:
+  nsToMonitor:
+    - appdynamics            
+    - bureau                 
+    - cert-manager           
+    - default                
+    - elk                   
+    - ingress-nginx          
+    - kube-node-lease        
+    - kube-public           
+    - kube-system            
+    - kubecost              
+    - kubernetes-dashboard   
+    - polaris                
+    - tools      
+  appName: bureau-eks-dev
+
+
+# helm upgrade --install appdynamics --namespace appdynamics appdynamics-charts/cluster-agent -f ./values-dev.yaml

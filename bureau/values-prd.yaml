@@ -1,0 +1,51 @@
+installClusterAgent: true
+
+imageInfo:
+  agentImage: docker.io/appdynamics/cluster-agent
+  agentTag: latest
+  operatorImage: docker.io/appdynamics/cluster-agent-operator
+  operatorTag: latest
+  imagePullPolicy: Always
+
+controllerInfo:
+  url: http://appdynamics.portoseguro.brasil:80
+  account: customer1
+  accessKey: 3ffed1d3-b5df-420b-a722-5cfa5e2388d8
+
+agentServiceAccount: appdynamics-cluster-agent
+operatorServiceAccount: appdynamics-operator
+
+# Cluster agent config
+clusterAgent:
+  nsToMonitor:
+    - appdynamics            
+    - bureau                 
+    - default                
+    - elk                    
+    - ingress-nginx          
+    - kube-node-lease        
+    - kube-public            
+    - kube-system            
+    - kubernetes-dashboard   
+    - polaris                
+    - tools                  
+    - traefik   
+  appName: bureau-eks-prd
+
+
+# kubectl get crds | grep appdynamics
+
+# kubectl delete crds clusteragents.cluster.appdynamics.com
+# kubectl delete crds infravizs.cluster.appdynamics.com
+# kubectl delete all --all -n appdynamics
+# kubectl delete serviceaccounts --all -n appdynamics
+# kubectl delete role --all -n appdynamics
+# kubectl delete rolebinding --all -n appdynamics
+
+# kubectl create namespace appdynamics
+
+# helm repo add appdynamics-charts https://ciscodevnet.github.io/appdynamics-charts
+# helm repo update
+# helm upgrade --install appdynamics --namespace appdynamics appdynamics-charts/cluster-agent -f ./values-prd.yaml
+
+# kubectl get pods -n appdynamics

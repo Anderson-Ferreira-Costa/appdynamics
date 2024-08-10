@@ -1,0 +1,33 @@
+imageInfo:
+  agentImage: docker.io/appdynamics/cluster-agent
+  agentTag: latest
+  operatorImage: docker.io/appdynamics/cluster-agent-operator
+  operatorTag: latest
+  imagePullPolicy: Always
+
+controllerInfo:
+  accessKey: 3ffed1d3-b5df-420b-a722-5cfa5e2388d8
+  account: customer1
+  url: http://appdynamics.portoseguro.brasil:80
+
+agentServiceAccount: appdynamics-cluster-agent
+operatorServiceAccount: appdynamics-operator
+
+# Cluster agent config
+clusterAgent:
+  nsToMonitor:
+    - amazon-guardduty
+    - appdynamics 
+    - cert-manager
+    - default
+    - kube-logging
+    - kube-monitoring
+    - kube-node-lease
+    - kube-public
+    - kube-system
+    - portofaz-prd
+    - twistlock
+  appName: portofaz-neo-prd
+
+
+# helm upgrade --install appdynamics --namespace appdynamics appdynamics-charts/cluster-agent -f ./values-prd.yaml
